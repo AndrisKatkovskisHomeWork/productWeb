@@ -8,10 +8,10 @@
         <version>2.1.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>productWeb</groupId>
-    <artifactId>productweb</artifactId>
+    <groupId>com.bicycles</groupId>
+    <artifactId>bicycles</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>productweb</name>
+    <name>bicycles</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -41,6 +41,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
