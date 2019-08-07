@@ -14,14 +14,19 @@ public class Dvd {
     @Column(name = "dvd_name")
     private String dvdName;
 
+    @Column(name = "dvd_price")
     private BigDecimal dvdPrice;
+
+    @Column(name = "dvd_size")
+    private String dvdSize;
 
     public Dvd() {
     }
 
-    public Dvd(String dvdName, BigDecimal dvdPrice) {
+    public Dvd(String dvdName, BigDecimal dvdPrice, String dvdSize) {
         this.dvdName = dvdName;
         this.dvdPrice = dvdPrice;
+        this.dvdSize = dvdSize;
     }
 
     public int getId() {
@@ -46,6 +51,14 @@ public class Dvd {
 
     public void setDvdPrice(BigDecimal dvdPrice) {
         this.dvdPrice = dvdPrice;
+    }
+
+    public String getDvdSize() {
+        return dvdSize;
+    }
+
+    public void setDvdSize(String dvdSize) {
+        this.dvdSize = dvdSize;
     }
 }
 
