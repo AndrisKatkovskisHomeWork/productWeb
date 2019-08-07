@@ -26,4 +26,13 @@ public class DvdService {
         return dvds;
     }
 
+    public boolean deleteDvd(int id) {
+        try {
+            dvdRepository.deleteById(id);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
 }
