@@ -2,6 +2,7 @@ package productweb.productweb.dvd;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -26,4 +27,9 @@ public class DvdController {
         return "dvdAdd";
     }
 
+    @RequestMapping(value = {"dvdList"}, method = RequestMethod.GET)
+    public String getAllDvds(Model model) {
+        model.addAttribute("dvds", this.dvdService.getAllDvds());
+        return "dvdList";
+    }
 }

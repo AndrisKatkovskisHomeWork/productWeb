@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+<div th:replace="fragments/navigation :: navigation"></div>
+
+<div class="panel panel-group panel-primary">
+
+    <div class="panel-heading"> DVD List:</div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> dvd Name</th>
+            <th scope="col"> dvd Price</th>
+            <th scope="col"> dvd Size</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="dvd : ${dvds}" class="table">
+            <th th:text="${dvd.id}" scope="col"></th>
+            <th th:text="${dvd.dvdName}" scope="col"></th>
+            <th th:text="${dvd.dvdPrice}" scope="col"></th>
+            <th th:text="${dvd.dvdSize}" scope="col"></th>
+            <td>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
