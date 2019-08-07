@@ -1,6 +1,7 @@
 package productweb.productweb.dvd;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class Dvd {
@@ -13,11 +14,14 @@ public class Dvd {
     @Column(name = "dvd_name")
     private String dvdName;
 
+    private BigDecimal dvdPrice;
+
     public Dvd() {
     }
 
-    public Dvd(String dvdName) {
+    public Dvd(String dvdName, BigDecimal dvdPrice) {
         this.dvdName = dvdName;
+        this.dvdPrice = dvdPrice;
     }
 
     public int getId() {
@@ -34,6 +38,14 @@ public class Dvd {
 
     public void setDvdName(String dvdName) {
         this.dvdName = dvdName;
+    }
+
+    public BigDecimal getDvdPrice() {
+        return dvdPrice;
+    }
+
+    public void setDvdPrice(BigDecimal dvdPrice) {
+        this.dvdPrice = dvdPrice;
     }
 }
 

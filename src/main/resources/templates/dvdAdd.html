@@ -11,7 +11,9 @@
     <div class="panel-heading"> dvdAdd</div>
     <form th:action="@{'/dvdAdd/'}"
           method="POST">
-        <input id="dvdName" type="text" name="dvdName" placeholder="name">
+        dvd Name <input id="dvdName" type="text" name="dvdName" placeholder="dvdName"> <br>
+        dvd Price <input id="dvdPrice" type="number" name="dvdPrice" placeholder="dvdPrice"> <br>
+
         <button type="submit" class="registerbtn btn btn-md btn-warning">submit</button>
         <br><br>
     </form>
