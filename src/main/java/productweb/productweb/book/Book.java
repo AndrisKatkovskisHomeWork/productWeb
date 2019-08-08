@@ -17,7 +17,7 @@ public class Book {
     @Column(name = "book_price")
     private BigDecimal bookPrice;
 
-    @Column(name = "book_weight")
+    @Column(name = "book_weight") // in MySQL change ==> book_weight decimal(12,3) ==> max value 999999999.999
     private BigDecimal bookWeight;
 
     public Book() {
