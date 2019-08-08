@@ -14,12 +14,16 @@
     <form th:action="@{'/furnitureAdd/'}"
           method="POST"><br>
         Name <input id="furnitureName" type="text" name="furnitureName" placeholder="furniture Name"> <br><br>
-        Price <input id="furniturePrice" type="number" step="any" name="furniturePrice" placeholder="Price (format 0.00)"> $
+        Price <input id="furniturePrice" type="number" step="any" name="furniturePrice"
+                     placeholder="Price (format 0.00)"> $
         <br><br>
 
-        Height <input id="furnitureHeight" type="number" step="any" name="furnitureWeight" placeholder="Height (format 0.0)"> (cm) <br><br>
-        Width <input id="furniturekWidth" type="number" step="any" name="furniturekWidth" placeholder="Width (format 0.0)"> (cm) <br><br>
-        Length <input id="furnitureLength" type="number" step="any" name="furnitureLength" placeholder="Length (format 0.0)"> (cm) <br><br>
+        Height <input id="furnitureHeight" type="number" step="any" name="furnitureHeight"
+                      placeholder="Height (format 0.0)"> (cm) <br><br>
+        Width <input id="furnitureWidth" type="number" step="any" name="furnitureWidth"
+                     placeholder="Width (format 0.0)"> (cm) <br><br>
+        Length <input id="furnitureLength" type="number" step="any" name="furnitureLength"
+                      placeholder="Length (format 0.0)"> (cm) <br><br>
         <button type="submit" class="registerbtn btn btn-md btn-warning">Confirm</button>
         <br><br>
     </form>

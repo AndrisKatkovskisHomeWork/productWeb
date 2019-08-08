@@ -21,21 +21,21 @@ public class Furniture {
     private BigDecimal furnitureHeight;
 
     @Column(name = "furniture_width")
-    private BigDecimal furniturekWidth;
+    private BigDecimal furnitureWidth;
 
     @Column(name = "furniture_length")
     private BigDecimal furnitureLength;
-    //furnitureHeight, furniturekWidth and furnitureLength  - in MySQL change to ==>  decimal(10,1) ==> max value 999999999.9
+    //furnitureHeight, furnitureWidth and furnitureLength  - in MySQL change to ==>  decimal(10,1) ==> max value 999999999.9
 
     public Furniture() {
     }
 
     public Furniture(String furnitureName, BigDecimal furniturePrice, BigDecimal furnitureHeight,
-                     BigDecimal furniturekWidth, BigDecimal furnitureLength) {
+                     BigDecimal furnitureWidth, BigDecimal furnitureLength) {
         this.furnitureName = furnitureName;
         this.furniturePrice = furniturePrice;
         this.furnitureHeight = furnitureHeight;
-        this.furniturekWidth = furniturekWidth;
+        this.furnitureWidth = furnitureWidth;
         this.furnitureLength = furnitureLength;
     }
 
@@ -71,12 +71,12 @@ public class Furniture {
         this.furnitureHeight = furnitureHeight;
     }
 
-    public BigDecimal getFurniturekWidth() {
-        return furniturekWidth;
+    public BigDecimal getFurnitureWidth() {
+        return furnitureWidth;
     }
 
-    public void setFurniturekWidth(BigDecimal furniturekWidth) {
-        this.furniturekWidth = furniturekWidth;
+    public void setFurnitureWidth(BigDecimal furnitureWidth) {
+        this.furnitureWidth = furnitureWidth;
     }
 
     public BigDecimal getFurnitureLength() {
