@@ -9,16 +9,12 @@
 
 <div class="panel panel-group panel-primary">
     <div class="panel-heading"> Add a new DVD</div>
+    <div th:replace="fragments/navigationAddForm :: navigationAddForm"></div>
     <form th:action="@{'/dvdAdd/'}"
           method="POST"><br>
         Name <input id="dvdName" type="text" name="dvdName" placeholder="dvd Name"> <br><br>
         Price <input id="dvdPrice" type="number" step="any" name="dvdPrice" placeholder="Price (format 0.00)">  $
         <br><br>
-
-        Type switcher:
-        <a th:href="@{/dvdAdd}" class="btn btn-md btn-info">DVD-disc</a>
-        <a th:href="@{/bookAdd}" class="btn btn-md btn-info">Book</a>
-        <a th:href="@{/furnitureAdd}" class="btn btn-md btn-info">Furniture</a> <br><br>
 
         Size <input id="dvdSize" type="text" name="dvdSize" placeholder="dvd Size"> (MB) <br><br>
         <button type="submit" class="registerbtn btn btn-md btn-warning">Confirm</button>

@@ -16,6 +16,11 @@ public class DvdController {
         return "DVD";
     }
 
+    @RequestMapping("/productAdd")
+    public String productAdd() {
+        return "productAdd";
+    }
+
     @RequestMapping(value = {"dvdAdd"}, method = RequestMethod.GET)
     public String showAllDvds() {
         return "dvdAdd";
@@ -36,7 +41,7 @@ public class DvdController {
     @RequestMapping(value = "/deleteDvd/{id}", method = RequestMethod.GET)
     public String deleteDvd(@PathVariable int id, Model model) {
         boolean isDeleted = dvdService.deleteDvd(id);
-        if(!isDeleted) {
+        if (!isDeleted) {
             model.addAttribute("errorDeleteDvd", "error deleting dvd!");
         }
         this.dvdService.deleteDvd(id);

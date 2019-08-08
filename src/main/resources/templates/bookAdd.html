@@ -8,19 +8,18 @@
 <div th:replace="fragments/navigation :: navigation"></div>
 
 <div class="panel panel-group panel-primary">
-    <div class="panel-heading"> Add a new DVD</div>
+    <div class="panel-heading"> Add a new book</div>
+    <div th:replace="fragments/navigationAddForm :: navigationAddForm"></div>
     <form th:action="@{'/bookAdd/'}"
-          method="POST"><br>
+    method="POST"><br>
         Name <input id="bookName" type="text" name="bookName" placeholder="book Name"> <br><br>
         Price <input id="bookPrice" type="number" step="any" name="bookPrice" placeholder="Price (format 0.00)"> $
         <br><br>
 
-        Type switcher:
-        <a th:href="@{/bookAdd}" class="btn btn-md btn-info">DVD-disc</a>
-        <a th:href="@{/bookAdd}" class="btn btn-md btn-info">Book</a>
-        <a th:href="@{/furnitureAdd}" class="btn btn-md btn-info">Furniture</a> <br><br>
 
-        Weight <input id="bookWeight" type="text" name="bookWeight" placeholder="book Weight"> (kg) <br><br>
+
+
+        Weight <input id="bookWeight" type="number" step="any" name="bookWeight" placeholder="Weight (format 0.000)"> (kg) <br><br>
         <button type="submit" class="registerbtn btn btn-md btn-warning">Confirm</button>
         <br><br>
     </form>

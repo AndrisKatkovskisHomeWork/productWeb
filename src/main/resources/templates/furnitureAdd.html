@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+<div th:replace="fragments/navigation :: navigation"></div>
+
+<div class="panel panel-group panel-primary">
+    <div class="panel-heading"> Add a new furniture</div>
+    <div th:replace="fragments/navigationAddForm :: navigationAddForm"></div>
+
+    <form th:action="@{'/furnitureAdd/'}"
+          method="POST"><br>
+        Name <input id="furnitureName" type="text" name="furnitureName" placeholder="furniture Name"> <br><br>
+        Price <input id="furniturePrice" type="number" step="any" name="furniturePrice" placeholder="Price (format 0.00)"> $
+        <br><br>
+
+        Height <input id="furnitureHeight" type="number" step="any" name="furnitureWeight" placeholder="Height (format 0.0)"> (cm) <br><br>
+        Width <input id="furniturekWidth" type="number" step="any" name="furniturekWidth" placeholder="Width (format 0.0)"> (cm) <br><br>
+        Length <input id="furnitureLength" type="number" step="any" name="furnitureLength" placeholder="Length (format 0.0)"> (cm) <br><br>
+        <button type="submit" class="registerbtn btn btn-md btn-warning">Confirm</button>
+        <br><br>
+    </form>
+
+</div>
+</body>
+</html>
