@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+<div th:replace="fragments/navigation :: navigation"></div>
+
+<div class="panel panel-group panel-primary">
+
+    <div class="panel-heading"> Book List</div>
+    <span th:if="${errorDeleteBook}" th:text="${errorDeleteBook}" class="alert alert-danger"></span>
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> book Name</th>
+            <th scope="col"> price $</th>
+            <th scope="col"> Weight (kg)</th>
+            <th scope="col"> action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="book : ${books}" class="table">
+            <th th:text="${book.id}" scope="col"></th>
+            <th th:text="${book.bookName}" scope="col"></th>
+            <th th:text="${book.bookPrice}" scope="col"></th>
+            <th th:text="${book.bookWeight}" scope="col"></th>
+            <td>
+                <form th:action="@{'/deleteBook/'+ ${book.id}}"
+                      method="GET">
+                    <input type="hidden" name="id" th:value="${book.id}">
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+</div>
+</body>
+</html>

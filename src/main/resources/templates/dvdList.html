@@ -9,35 +9,45 @@
 
 <div class="panel panel-group panel-primary">
 
-    <div class="panel-heading"> DVD List:</div>
+    <div class="panel-heading"> DVD List</div>
     <span th:if="${errorDeleteDvd}" th:text="${errorDeleteDvd}" class="alert alert-danger"></span>
-    <table class="table">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col"> dvd Name</th>
-            <th scope="col"> dvd Price</th>
-            <th scope="col"> dvd Size</th>
-            <th scope="col"> Action</th>
-        </tr>
-        </thead>
+<!--    <form th:action="@{'/deleteDvd/'+ ${dvd.id}}"-->
+<!--          method="GET">-->
+<!--        <input type="hidden" name="id" th:value="${dvd.id}">-->
+<!--        <button type="submit" class="registerbtn btn btn-md btn-danger"> delete selected records</button>-->
 
-        <tbody>
-        <tr th:each="dvd : ${dvds}" class="table">
-            <th th:text="${dvd.id}" scope="col"></th>
-            <th th:text="${dvd.dvdName}" scope="col"></th>
-            <th th:text="${dvd.dvdPrice}" scope="col"></th>
-            <th th:text="${dvd.dvdSize}" scope="col"></th>
-            <td>
-                <form th:action="@{'/deleteDvd/'+ ${dvd.id}}"
-                      method="GET">
-                    <input type="hidden" name="id" th:value="${dvd.id}">
-                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th><input type="checkbox" id="checkBoxAll"> all</th>
+                <th scope="col"> dvd Name</th>
+                <th scope="col"> price $</th>
+                <th scope="col"> size (MB)</th>
+                <th scope="col"> action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="dvd : ${dvds}" class="table">
+                <th th:text="${dvd.id}" scope="col"></th>
+
+                <td><input type="checkbox" class="check-box" th:value="${dvd.id}" name="checkboxDVD"></td>
+
+                <th th:text="${dvd.dvdName}" scope="col"></th>
+                <th th:text="${dvd.dvdPrice}" scope="col"></th>
+                <th th:text="${dvd.dvdSize}" scope="col"></th>
+                <td>
+                    <form th:action="@{'/deleteDvd/'+ ${dvd.id}}"
+                          method="GET">
+                        <input type="hidden" name="id" th:value="${dvd.id}">
+                        <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
 </div>
 </body>
 </html>
