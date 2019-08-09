@@ -31,6 +31,11 @@ public class AllProductController {
         return "allExistingProductList";
     }
 
+        @RequestMapping("/productAdd")
+    public String productAdd() {
+        return "productAdd";
+    }
+
     @RequestMapping(value = {"allExistingProductList"}, method = RequestMethod.GET)
     public String getAllDvds(Model model) {
         model.addAttribute("dvds", this.dvdService.getAllDvds());
