@@ -21,11 +21,6 @@ public class AllProductController {
     @Autowired
     FurnitureService furnitureService;
 
-    @RequestMapping("/DVD")
-    public String DVD() {
-        return "DVD";
-    }
-
     @RequestMapping("/allExistingProductList")
     public String allExistingProductList() {
         return "allExistingProductList";
