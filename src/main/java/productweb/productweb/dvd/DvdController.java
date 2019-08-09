@@ -11,16 +11,6 @@ public class DvdController {
     @Autowired
     DvdService dvdService;
 
-    @RequestMapping("/DVD")
-    public String DVD() {
-        return "DVD";
-    }
-
-    @RequestMapping("/productAdd")
-    public String productAdd() {
-        return "productAdd";
-    }
-
     @RequestMapping(value = {"dvdAdd"}, method = RequestMethod.GET)
     public String showAllDvds() {
         return "dvdAdd";

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+<div th:replace="fragments/navigation :: navigation"></div>
+
+<div class="panel panel-group panel-primary">
+
+    <!--    DVD-->
+    <div class="panel-heading"> DVD List</div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> dvd Name</th>
+            <th scope="col"> price $</th>
+            <th scope="col"> size (MB)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dvd : ${dvds}" class="table">
+            <th th:text="${dvd.id}" scope="col"></th>
+            <th th:text="${dvd.dvdName}" scope="col"></th>
+            <th th:text="${dvd.dvdPrice}" scope="col"></th>
+            <th th:text="${dvd.dvdSize}" scope="col"></th>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--    Book-->
+    <div class="panel-heading"> Book List</div>
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> book Name</th>
+            <th scope="col"> price $</th>
+            <th scope="col"> Weight (kg)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}" class="table">
+            <th th:text="${book.id}" scope="col"></th>
+            <th th:text="${book.bookName}" scope="col"></th>
+            <th th:text="${book.bookPrice}" scope="col"></th>
+            <th th:text="${book.bookWeight}" scope="col"></th>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--    Furniture-->
+    <div class="panel-heading"> Furniture List</div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> furniture Name</th>
+            <th scope="col"> price $</th>
+            <th scope="col"> Dimensions (height, width, length )</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="furniture : ${furnitures}" class="table">
+            <th th:text="${furniture.id}" scope="col"></th>
+            <th th:text="${furniture.furnitureName}" scope="col"></th>
+            <th th:text="${furniture.furniturePrice}" scope="col"></th>
+            <th scope="col">
+                <th:block>
+                    <p th:text="${furniture.furnitureHeight}"></p>
+                    <p th:text="${furniture.furnitureWidth}"></p>
+                    <p th:text="${furniture.furnitureLength}"></p>
+                </th:block>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
