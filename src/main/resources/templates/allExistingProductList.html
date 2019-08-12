@@ -14,6 +14,7 @@
     <div class="panel-heading"> DVD List</div>
     <span th:if="${errorDeleteDvd}" th:text="${errorDeleteDvd}" class="alert alert-danger"></span>
     <span th:if="${errorDeleteBook}" th:text="${errorDeleteBook}" class="alert alert-danger"></span>
+    <span th:if="${errorDeleteFurniture}" th:text="${errorDeleteFurniture}" class="alert alert-danger"></span>
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -80,6 +81,7 @@
             <th scope="col"> furniture Name</th>
             <th scope="col"> price $</th>
             <th scope="col"> Dimensions (height, width, length )</th>
+            <th scope="col"> action</th>
         </tr>
         </thead>
         <tbody>
@@ -94,6 +96,13 @@
                     <p th:text="${furniture.furnitureLength}"></p>
                 </th:block>
             </th>
+            <td>
+                <form th:action="@{'/deleteFurniture/'+ ${furniture.id}}"
+                      method="GET">
+                    <input type="hidden" name="id" th:value="${furniture.id}">
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

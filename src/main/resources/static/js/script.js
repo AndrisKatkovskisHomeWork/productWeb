@@ -11,3 +11,10 @@ function toggleBook(source) {
         checkboxes[i].checked = source.checked;
     }
 }
+
+function toggleFurniture(source) {
+    checkboxes = document.getElementsByName('checkboxFurniture');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+        checkboxes[i].checked = source.checked;
+    }
+}

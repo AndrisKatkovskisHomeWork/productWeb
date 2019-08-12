@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class FurnitureController {
 
@@ -28,13 +30,23 @@ public class FurnitureController {
         return "furnitureList";
     }
 
-    @RequestMapping(value = "/deleteFurniture/{id}", method = RequestMethod.GET)
-    public String deleteFurniture(@PathVariable int id, Model model) {
-        boolean isDeleted = furnitureService.deleteFurniture(id);
-        if (!isDeleted) {
-            model.addAttribute("errorDeleteFurniture", "error deleting furniture!");
+    @RequestMapping(value = "/deleteFurnitureAll", method = RequestMethod.GET)
+    public String deleteFurniture(Model model, HttpServletRequest request) {
+        if (request.getQueryString() != null) {
+            String queryText = request.getQueryString();
+            System.out.println(queryText);
+            queryText = queryText.replaceAll("&", "");
+            System.out.println(queryText);
+            String[] checkBoxesIds = queryText.split("checkboxFurniture=");
+
+            for (int i = 1; i < checkBoxesIds.length; i++) {
+                boolean isDeleted = furnitureService.deleteFurniture(Integer.parseInt(checkBoxesIds[i]));
+                if (!isDeleted) {
+                    model.addAttribute("errorDeleteFurnitureAll", "error deleting selected furnitures!");
+                }
+                this.furnitureService.deleteFurniture(Integer.parseInt(checkBoxesIds[i]));
+            }
         }
-        this.furnitureService.deleteFurniture(id);
         model.addAttribute("furnitures", this.furnitureService.getAllFurnitures());
         return "furnitureList";
     }

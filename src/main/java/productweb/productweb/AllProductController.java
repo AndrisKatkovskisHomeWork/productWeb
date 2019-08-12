@@ -27,7 +27,7 @@ public class AllProductController {
         return "allExistingProductList";
     }
 
-        @RequestMapping("/productAdd")
+    @RequestMapping("/productAdd")
     public String productAdd() {
         return "productAdd";
     }
@@ -55,15 +55,26 @@ public class AllProductController {
         return "redirect:/allExistingProductList";
     }
 
-        @RequestMapping(value = "/deleteBook/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteBook/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable int id, Model model) {
         boolean isDeleted = bookService.deleteBook(id);
         if (!isDeleted) {
             model.addAttribute("errorDeleteBook", "error deleting book!");
         }
         this.bookService.deleteBook(id);
-            getAllDvdBookFurniture(model);
-            return "redirect:/allExistingProductList";
+        getAllDvdBookFurniture(model);
+        return "redirect:/allExistingProductList";
+    }
+
+    @RequestMapping(value = "/deleteFurniture/{id}", method = RequestMethod.GET)
+    public String deleteFurniture(@PathVariable int id, Model model) {
+        boolean isDeleted = furnitureService.deleteFurniture(id);
+        if (!isDeleted) {
+            model.addAttribute("errorDeleteFurniture", "error deleting furniture!");
+        }
+        this.furnitureService.deleteFurniture(id);
+        getAllDvdBookFurniture(model);
+        return "redirect:/allExistingProductList";
     }
 
 }

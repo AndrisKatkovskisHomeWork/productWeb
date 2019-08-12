@@ -14,33 +14,32 @@
     <form th:action="@{'/deleteBookAll/'}"
           method="GET">
 
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th>
+                    <input type="checkbox" id="checkBoxAll" onClick="toggleBook(this)"> all
+                    <button type="submit" class="registerbtn btn btn-md btn-danger">delete selected
+                    </button>
+                </th>
+                <th scope="col"> book Name</th>
+                <th scope="col"> price $</th>
+                <th scope="col"> Weight (kg)</th>
+            </tr>
+            </thead>
 
-    <table class="table">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th>
-                <input type="checkbox" id="checkBoxAll" onClick="toggleBook(this)"> all
-                <button type="submit" class="registerbtn btn btn-md btn-danger">delete selected
-                </button>
-            </th>
-            <th scope="col"> book Name</th>
-            <th scope="col"> price $</th>
-            <th scope="col"> Weight (kg)</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr th:each="book : ${books}" class="table">
-            <th th:text="${book.id}" scope="col"></th>
-            <td><input type="checkbox" class="check-box" th:value="${book.id}" name="checkboxBook"></td>
-            <th th:text="${book.bookName}" scope="col"></th>
-            <th th:text="${book.bookPrice}" scope="col"></th>
-            <th th:text="${book.bookWeight}" scope="col"></th>
-        </tr>
-        </tbody>
-    </table>
-
+            <tbody>
+            <tr th:each="book : ${books}" class="table">
+                <th th:text="${book.id}" scope="col"></th>
+                <td><input type="checkbox" class="check-box" th:value="${book.id}" name="checkboxBook"></td>
+                <th th:text="${book.bookName}" scope="col"></th>
+                <th th:text="${book.bookPrice}" scope="col"></th>
+                <th th:text="${book.bookWeight}" scope="col"></th>
+            </tr>
+            </tbody>
+        </table>
+    </form>
 </div>
 </body>
 </html>
