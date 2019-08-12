@@ -8,12 +8,12 @@
 <div th:replace="fragments/navigation :: navigation"></div>
 
 <div class="panel panel-group panel-primary">
-    <div class="panel-heading"> List of all products </div>
+    <div class="panel-heading"> List of all products</div>
     <div th:replace="fragments/navigationList :: navigationList"></div>
-    <span th:if="${errorDeleteDvd}" th:text="${errorDeleteDvd}" class="alert alert-danger"></span>
-
     <!--    DVD-->
     <div class="panel-heading"> DVD List</div>
+    <span th:if="${errorDeleteDvd}" th:text="${errorDeleteDvd}" class="alert alert-danger"></span>
+    <span th:if="${errorDeleteBook}" th:text="${errorDeleteBook}" class="alert alert-danger"></span>
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -21,6 +21,7 @@
             <th scope="col"> dvd Name</th>
             <th scope="col"> price $</th>
             <th scope="col"> size (MB)</th>
+            <th scope="col"> action</th>
         </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@
             <th scope="col"> book Name</th>
             <th scope="col"> price $</th>
             <th scope="col"> Weight (kg)</th>
+            <th scope="col"> action</th>
         </tr>
         </thead>
         <tbody>
@@ -58,6 +60,13 @@
             <th th:text="${book.bookName}" scope="col"></th>
             <th th:text="${book.bookPrice}" scope="col"></th>
             <th th:text="${book.bookWeight}" scope="col"></th>
+            <td>
+                <form th:action="@{'/deleteBook/'+ ${book.id}}"
+                      method="GET">
+                    <input type="hidden" name="id" th:value="${book.id}">
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

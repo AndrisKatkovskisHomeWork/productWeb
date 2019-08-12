@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class BookController {
 
@@ -28,13 +30,23 @@ public class BookController {
         return "bookList";
     }
 
-    @RequestMapping(value = "/deleteBook/{id}", method = RequestMethod.GET)
-    public String deleteBook(@PathVariable int id, Model model) {
-        boolean isDeleted = bookService.deleteBook(id);
-        if (!isDeleted) {
-            model.addAttribute("errorDeleteBook", "error deleting book!");
+    @RequestMapping(value = "/deleteBookAll", method = RequestMethod.GET)
+    public String deleteBookAll(Model model, HttpServletRequest request) {
+        if (request.getQueryString() != null) {
+            String queryText = request.getQueryString();
+            System.out.println(queryText);
+            queryText = queryText.replaceAll("&", "");
+            System.out.println(queryText);
+            String[] checkBoxesIds = queryText.split("checkboxBook=");
+
+            for (int i = 1; i < checkBoxesIds.length; i++) {
+                boolean isDeleted = bookService.deleteBook(Integer.parseInt(checkBoxesIds[i]));
+                if (!isDeleted) {
+                    model.addAttribute("errorDeleteBookAll", "error deleting selected books!");
+                }
+                this.bookService.deleteBook(Integer.parseInt(checkBoxesIds[i]));
+            }
         }
-        this.bookService.deleteBook(id);
         model.addAttribute("books", this.bookService.getAllBooks());
         return "bookList";
     }

@@ -34,10 +34,14 @@ public class AllProductController {
 
     @RequestMapping(value = {"allExistingProductList"}, method = RequestMethod.GET)
     public String getAllDvds(Model model) {
+        getAllDvdBookFurniture(model);
+        return "allExistingProductList";
+    }
+
+    private void getAllDvdBookFurniture(Model model) {
         model.addAttribute("dvds", this.dvdService.getAllDvds());
         model.addAttribute("books", this.bookService.getAllBooks());
         model.addAttribute("furnitures", this.furnitureService.getAllFurnitures());
-        return "allExistingProductList";
     }
 
     @RequestMapping(value = "/deleteDvd/{id}", method = RequestMethod.GET)
@@ -48,7 +52,18 @@ public class AllProductController {
         }
         this.dvdService.deleteDvd(id);
         model.addAttribute("dvds", this.dvdService.getAllDvds());
-        return "allExistingProductList";
+        return "redirect:/allExistingProductList";
+    }
+
+        @RequestMapping(value = "/deleteBook/{id}", method = RequestMethod.GET)
+    public String deleteBook(@PathVariable int id, Model model) {
+        boolean isDeleted = bookService.deleteBook(id);
+        if (!isDeleted) {
+            model.addAttribute("errorDeleteBook", "error deleting book!");
+        }
+        this.bookService.deleteBook(id);
+            getAllDvdBookFurniture(model);
+            return "redirect:/allExistingProductList";
     }
 
 }
