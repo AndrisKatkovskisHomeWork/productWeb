@@ -3,6 +3,7 @@ package productweb.productweb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import productweb.productweb.book.BookService;
@@ -36,6 +37,17 @@ public class AllProductController {
         model.addAttribute("dvds", this.dvdService.getAllDvds());
         model.addAttribute("books", this.bookService.getAllBooks());
         model.addAttribute("furnitures", this.furnitureService.getAllFurnitures());
+        return "allExistingProductList";
+    }
+
+    @RequestMapping(value = "/deleteDvd/{id}", method = RequestMethod.GET)
+    public String deleteDvd(@PathVariable int id, Model model) {
+        boolean isDeleted = dvdService.deleteDvd(id);
+        if (!isDeleted) {
+            model.addAttribute("errorDeleteDvd", "error deleting dvd!");
+        }
+        this.dvdService.deleteDvd(id);
+        model.addAttribute("dvds", this.dvdService.getAllDvds());
         return "allExistingProductList";
     }
 

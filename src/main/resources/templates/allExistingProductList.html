@@ -10,6 +10,7 @@
 <div class="panel panel-group panel-primary">
     <div class="panel-heading"> List of all products </div>
     <div th:replace="fragments/navigationList :: navigationList"></div>
+    <span th:if="${errorDeleteDvd}" th:text="${errorDeleteDvd}" class="alert alert-danger"></span>
 
     <!--    DVD-->
     <div class="panel-heading"> DVD List</div>
@@ -28,6 +29,13 @@
             <th th:text="${dvd.dvdName}" scope="col"></th>
             <th th:text="${dvd.dvdPrice}" scope="col"></th>
             <th th:text="${dvd.dvdSize}" scope="col"></th>
+            <td>
+                <form th:action="@{'/deleteDvd/'+ ${dvd.id}}"
+                      method="GET">
+                    <input type="hidden" name="id" th:value="${dvd.id}">
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

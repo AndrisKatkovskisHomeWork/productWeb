@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class DvdController {
 
@@ -28,13 +30,23 @@ public class DvdController {
         return "dvdList";
     }
 
-    @RequestMapping(value = "/deleteDvd/{id}", method = RequestMethod.GET)
-    public String deleteDvd(@PathVariable int id, Model model) {
-        boolean isDeleted = dvdService.deleteDvd(id);
-        if (!isDeleted) {
-            model.addAttribute("errorDeleteDvd", "error deleting dvd!");
+    @RequestMapping(value = "/deleteDvdAll", method = RequestMethod.GET)
+    public String deleteDvdAll(Model model, HttpServletRequest request) {
+        if (request.getQueryString() != null) {
+            String queryText = request.getQueryString();
+            System.out.println(queryText);
+            queryText = queryText.replaceAll("&", "");
+            System.out.println(queryText);
+            String[] checkBoxesIds = queryText.split("checkboxDVD=");
+
+            for (int i = 1; i < checkBoxesIds.length; i++) {
+                boolean isDeleted = dvdService.deleteDvd(Integer.parseInt(checkBoxesIds[i]));
+                if (!isDeleted) {
+                    model.addAttribute("errorDeleteDvdAll", "error deleting selected dvd!");
+                }
+                this.dvdService.deleteDvd(Integer.parseInt(checkBoxesIds[i]));
+            }
         }
-        this.dvdService.deleteDvd(id);
         model.addAttribute("dvds", this.dvdService.getAllDvds());
         return "dvdList";
     }
